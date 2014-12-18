@@ -44,7 +44,12 @@ public class Reader implements Runnable{
 					if(Gdx.files.local("/Players/"+breakDown[1]+"/account.txt").exists()){
 					FileHandle file = Gdx.files.local("/Players/"+breakDown[1]+"/account.txt");
 					String[] text = file.readString().split(":");
-					
+					if(breakDown[1].equals(text[2])&&breakDown[2].equals(text[3])){
+						if(se.send("login:"+breakDown[1])){break;}
+					}
+					else{
+						if(se.send("Invalid")){break;}
+					}
 					}
 					else{
 						if(se.send("Invalid")){break;}
